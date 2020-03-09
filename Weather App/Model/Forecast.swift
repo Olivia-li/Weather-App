@@ -36,10 +36,10 @@ struct Forecast: Decodable{
     var summary: String
     var icon: String
     var precipProbability: Double
-    var precipType: String?
+    var precipType: String!
     var windSpeed: Double
-    var temperature: Double?
-    var apparentTemperature: Double?
-    var temperatureHigh: Double?
-    var temperatureLow: Double?
+    var temperature: Double!
+    var apparentTemperature: Double!
+    var temperatureHigh: Double!
+    var temperatureLow: Double!
 }

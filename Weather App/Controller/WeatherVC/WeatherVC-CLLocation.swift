@@ -12,11 +12,18 @@ import CoreLocation
 extension WeatherVC: CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation:CLLocation = locations[0] as CLLocation
         
-        print("user latitude = \(userLocation.coordinate.latitude)")
-        print("user longitude = \(userLocation.coordinate.longitude)")
+        let userLocation: CLLocation = locations[0] as CLLocation
+        
+        manager.stopUpdatingLocation()
+        
+        let longitude = "\(userLocation.coordinate.longitude)"
+        let latitude = "\(userLocation.coordinate.latitude)"
+        
+        self.url = ApiManager.getURL(latitude: latitude, longitude: longitude)
+        getApi(self.url!)
     }
+    
     
     func determineCurrentLocation() {
         locationManager = CLLocationManager()

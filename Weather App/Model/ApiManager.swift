@@ -9,10 +9,14 @@
 import Foundation
 
 class ApiManager{
-    static let sURL = "https://api.darksky.net/forecast/dc76cd7e80bc4de10df91ea21901d700/37.785834,-122.406417"
+    static let sURL = "https://api.darksky.net/forecast/dc76cd7e80bc4de10df91ea21901d700/"
     
-    static func getURL(latitude: Double, longitude: Double, date: Int) -> String{
+    static func getURL(_ latitude: String,_  longitude: String, date: Int) -> String{
         return "\(sURL)\(latitude),\(longitude),\(date)"
+    }
+    
+    static func getURL(latitude: String, longitude: String) -> String{
+        return "\(sURL)\(latitude),\(longitude)"
     }
 
     static func fetchWeather(_ fullURL: String, _ completionHandler: @escaping (Forecast) -> Void) {

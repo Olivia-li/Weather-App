@@ -16,19 +16,15 @@ class WeatherVC: UIViewController {
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var apparentTemperature: UILabel!
     @IBOutlet weak var precipProbability: UILabel!
-    @IBOutlet weak var precipType: UILabel!
     @IBOutlet weak var windSpeed: UILabel!
     
     var forecast: Forecast!
-    var test = "https://api.darksky.net/forecast/redacted/37.785834,-122.406417"
-    
     var locationManager: CLLocationManager?
+    var url: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         determineCurrentLocation()
-        getApi(test)
-       
     
     }
     
@@ -44,6 +40,10 @@ class WeatherVC: UIViewController {
     
     func reload(){
         summary.text = forecast.summary
+        precipProbability.text = "Precipitation Probability: \(forecast.precipProbability)"
+        windSpeed.text = "Wind Speed: \(forecast.windSpeed) mph"
+        temperature.text = "Temperature: \(forecast.temperature!)°F"
+        apparentTemperature.text = "Feels like: \(forecast.apparentTemperature!)°F"
     }
 
 }

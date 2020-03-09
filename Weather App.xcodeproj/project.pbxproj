@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45324E7C2416DF1000BC4316 /* ForecastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45324E7B2416DF1000BC4316 /* ForecastVC.swift */; };
 		455EF2322416048300D70A48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455EF2312416048300D70A48 /* AppDelegate.swift */; };
 		455EF2342416048300D70A48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455EF2332416048300D70A48 /* SceneDelegate.swift */; };
 		455EF2362416048300D70A48 /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455EF2352416048300D70A48 /* WeatherVC.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		45324E7B2416DF1000BC4316 /* ForecastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastVC.swift; sourceTree = "<group>"; };
 		455EF22E2416048300D70A48 /* Weather App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		455EF2312416048300D70A48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		455EF2332416048300D70A48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45324E792416DEF300BC4316 /* WeatherVC */ = {
+			isa = PBXGroup;
+			children = (
+				455EF2352416048300D70A48 /* WeatherVC.swift */,
+				455EF267241605CE00D70A48 /* WeatherVC-CLLocation.swift */,
+			);
+			path = WeatherVC;
+			sourceTree = "<group>";
+		};
+		45324E7A2416DEFE00BC4316 /* ForecastVC */ = {
+			isa = PBXGroup;
+			children = (
+				45324E7B2416DF1000BC4316 /* ForecastVC.swift */,
+			);
+			path = ForecastVC;
+			sourceTree = "<group>";
+		};
 		455EF2252416048300D70A48 = {
 			isa = PBXGroup;
 			children = (
@@ -147,8 +166,8 @@
 		455EF262241604EC00D70A48 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				455EF2352416048300D70A48 /* WeatherVC.swift */,
-				455EF267241605CE00D70A48 /* WeatherVC-CLLocation.swift */,
+				45324E7A2416DEFE00BC4316 /* ForecastVC */,
+				45324E792416DEF300BC4316 /* WeatherVC */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -300,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45324E7C2416DF1000BC4316 /* ForecastVC.swift in Sources */,
 				455EF2362416048300D70A48 /* WeatherVC.swift in Sources */,
 				455EF2322416048300D70A48 /* AppDelegate.swift in Sources */,
 				455EF2342416048300D70A48 /* SceneDelegate.swift in Sources */,
