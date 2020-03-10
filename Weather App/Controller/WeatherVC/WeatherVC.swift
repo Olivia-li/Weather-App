@@ -17,6 +17,7 @@ class WeatherVC: UIViewController {
     @IBOutlet weak var apparentTemperature: UILabel!
     @IBOutlet weak var precipProbability: UILabel!
     @IBOutlet weak var windSpeed: UILabel!
+    @IBOutlet weak var date: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     var weather: Forecast!
@@ -24,14 +25,20 @@ class WeatherVC: UIViewController {
     
     var locationManager: CLLocationManager?
     var url: String?
+    var stringDate: String?
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         determineCurrentLocation()
-    
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        determineCurrentLocation()
+    }
+    
     
     func getApi(_ sURL: String) {
         ApiManager.fetchWeather(sURL, { data in
@@ -51,6 +58,7 @@ class WeatherVC: UIViewController {
     }
     
     func reload(){
+        date.text = ApiManager.getDate(unix: weather.time)
         summary.text = weather.summary
         picture.image = UIImage(named: weather.icon)
         precipProbability.text = "Precipitation Probability: \(weather.precipProbability)"

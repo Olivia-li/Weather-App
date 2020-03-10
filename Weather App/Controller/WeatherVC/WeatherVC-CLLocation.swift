@@ -21,7 +21,15 @@ extension WeatherVC: CLLocationManagerDelegate{
         let longitude = "\(userLocation.coordinate.longitude)"
         let latitude = "\(userLocation.coordinate.latitude)"
         
-        self.url = ApiManager.getURL(latitude: latitude, longitude: longitude)
+        if let date = stringDate{
+            self.url = ApiManager.getURL(latitude, longitude, date: date)
+            print("date!!!")
+        }
+        else{
+            self.url = ApiManager.getURL(latitude: latitude, longitude: longitude)
+            print("no date")
+        }
+        print(self.url)
         getApi(self.url!)
         
         getPlace(for: userLocation) { placemark in

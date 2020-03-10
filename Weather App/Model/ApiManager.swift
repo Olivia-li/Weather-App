@@ -12,7 +12,7 @@ class ApiManager{
     static let sURL = "https://api.darksky.net/forecast/dc76cd7e80bc4de10df91ea21901d700/"
     
     
-    static func getURL(_ latitude: String,_  longitude: String, date: Int) -> String{
+    static func getURL(_ latitude: String,_  longitude: String, date: String) -> String{
         return "\(sURL)\(latitude),\(longitude),\(date)"
     }
     
@@ -20,23 +20,16 @@ class ApiManager{
         return "\(sURL)\(latitude),\(longitude)"
     }
     
-    static func getDate(unix: Double) -> NSDate{
-        return NSDate(timeIntervalSince1970: unix)
-    }
-    
-    
-    static func removeTimeStamp(fromDate: Date) -> Date {
-        guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: fromDate)) else {
-            fatalError("Failed to strip time from Date object")
-        }
-        return date
-    }
-    
-    static func getDayOfWeek(_ today: NSDate?) -> String? {
+    static func getDate(unix: Double) -> String{
+        let nsdate = NSDate(timeIntervalSince1970: unix)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        let stringDate = formatter.string(from: today! as Date)
-        let dateNoTime = formatter.date(from: stringDate)
+        return formatter.string(from: nsdate as Date)
+    }
+    
+    static func getDayOfWeek(_ today: String) -> String? {
+        let formatter = DateFormatter()
+        let dateNoTime = formatter.date(from: today)
         let myCalendar = Calendar(identifier: .gregorian)
         let weekDay = myCalendar.component(.weekday, from: dateNoTime!)
         switch weekDay{
