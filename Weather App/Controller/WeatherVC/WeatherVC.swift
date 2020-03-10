@@ -10,6 +10,8 @@ import UIKit
 import CoreLocation
 import AVFoundation
 
+
+
 class WeatherVC: UIViewController {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var picture: UIImageView!
@@ -36,12 +38,32 @@ class WeatherVC: UIViewController {
         determineCurrentLocation()
     }
     
+    func unixToSpeech(unix: Double) -> String{
+        let nsdate = NSDate(timeIntervalSince1970: unix)
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents([.day , .month , .year], from: nsdate as Date)
+        let string = "\(monthAsString(date: nsdate as Date)) \(components.day!) \(components.year!)"
+        return string
+    }
+    
+    func monthAsString(date: Date) -> String {
+            let df = DateFormatter()
+            df.setLocalizedDateFormatFromTemplate("MMMM")
+            return df.string(from: date)
+    }
+    
     func getSpeech(){
-        var speechString = "Currently in \(self.city!) it is \(weather.temperature!) degrees and \(weather.summary)"
+        var speechString: String?
+        if let stringDate = self.stringDate{
+            speechString = "On \(unixToSpeech(unix: weather.time)) in \(self.city!) it was \(weather.temperature!) degrees and \(weather.summary)"
+        }
+        else{
+            speechString = "Currently in \(self.city!) it is \(weather.temperature!) degrees and \(weather.summary)"
+            print("No date")
+        }
         let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: speechString)
+        let utterance = AVSpeechUtterance(string: speechString!)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
-
         synthesizer.speak(utterance)
     }
     
@@ -81,7 +103,7 @@ class WeatherVC: UIViewController {
         windSpeed.text = "Wind Speed: \(weather.windSpeed) mph"
         temperature.text = "Temperature: \(weather.temperature!)°F"
         apparentTemperature.text = "Feels like: \(weather.apparentTemperature!)°F"
-        getSpeech()
+        self.getSpeech()
     }
 
 }

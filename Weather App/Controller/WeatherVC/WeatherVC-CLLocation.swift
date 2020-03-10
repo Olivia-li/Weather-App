@@ -32,7 +32,6 @@ extension WeatherVC: CLLocationManagerDelegate{
             latitude = "\(userLocation.coordinate.latitude)"
         }
         
-        print(latitude)
         
         if let date = stringDate{
             self.url = ApiManager.getURL(latitude, longitude, date: date)

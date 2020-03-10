@@ -24,7 +24,6 @@ class ApiManager{
         let nsdate = NSDate(timeIntervalSince1970: unix)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        print(formatter.string(from: nsdate as Date))
         return formatter.string(from: nsdate as Date)
     }
     
@@ -71,7 +70,7 @@ class ApiManager{
                 
                 let request = try! JSONDecoder().decode(ForecastRequest.self, from: data)
                 completionHandler(request.currently)
-                
+                                
             }
             task.resume()
         }

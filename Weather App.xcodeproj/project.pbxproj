@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4520720B2417963900BA41FF /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4520720A2417963900BA41FF /* Speech.swift */; };
 		452AFC2824173CC200807C2B /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452AFC2724173CC200807C2B /* SettingsVC.swift */; };
 		45324E802416ED4F00BC4316 /* weatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45324E7F2416ED4F00BC4316 /* weatherCell.swift */; };
 		453ED5912416EDEC003897C9 /* WeatherVC-Tableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453ED5902416EDEC003897C9 /* WeatherVC-Tableview.swift */; };
@@ -42,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4520720A2417963900BA41FF /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
 		452AFC2724173CC200807C2B /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		45324E7F2416ED4F00BC4316 /* weatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherCell.swift; sourceTree = "<group>"; };
 		453ED5902416EDEC003897C9 /* WeatherVC-Tableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherVC-Tableview.swift"; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 			children = (
 				455EF269241606F000D70A48 /* Forecast.swift */,
 				455EF26D24160A8900D70A48 /* ApiManager.swift */,
-				4520720A2417963900BA41FF /* Speech.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,7 +334,6 @@
 				455EF26E24160A8900D70A48 /* ApiManager.swift in Sources */,
 				455EF26A241606F000D70A48 /* Forecast.swift in Sources */,
 				452AFC2824173CC200807C2B /* SettingsVC.swift in Sources */,
-				4520720B2417963900BA41FF /* Speech.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
