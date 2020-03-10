@@ -24,11 +24,13 @@ class ApiManager{
         let nsdate = NSDate(timeIntervalSince1970: unix)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
+        print(formatter.string(from: nsdate as Date))
         return formatter.string(from: nsdate as Date)
     }
     
     static func getDayOfWeek(_ today: String) -> String? {
         let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
         let dateNoTime = formatter.date(from: today)
         let myCalendar = Calendar(identifier: .gregorian)
         let weekDay = myCalendar.component(.weekday, from: dateNoTime!)

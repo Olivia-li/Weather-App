@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import AVFoundation
 
 class WeatherVC: UIViewController {
     @IBOutlet weak var location: UILabel!
@@ -26,12 +27,22 @@ class WeatherVC: UIViewController {
     var locationManager: CLLocationManager?
     var url: String?
     var stringDate: String?
-    
-    
+    var coordinate: CLLocationCoordinate2D?
+    var city: String?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         determineCurrentLocation()
+    }
+    
+    func getSpeech(){
+        var speechString = "Currently in \(self.city!) it is \(weather.temperature!) degrees and \(weather.summary)"
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: speechString)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+
+        synthesizer.speak(utterance)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +50,11 @@ class WeatherVC: UIViewController {
         determineCurrentLocation()
     }
     
+    @IBAction func clearButton(_ sender: Any) {
+        stringDate = nil
+        coordinate = nil
+        determineCurrentLocation()
+    }
     
     func getApi(_ sURL: String) {
         ApiManager.fetchWeather(sURL, { data in
@@ -61,10 +77,11 @@ class WeatherVC: UIViewController {
         date.text = ApiManager.getDate(unix: weather.time)
         summary.text = weather.summary
         picture.image = UIImage(named: weather.icon)
-        precipProbability.text = "Precipitation Probability: \(weather.precipProbability)"
+        precipProbability.text = "POP: \(weather.precipProbability)%"
         windSpeed.text = "Wind Speed: \(weather.windSpeed) mph"
         temperature.text = "Temperature: \(weather.temperature!)°F"
         apparentTemperature.text = "Feels like: \(weather.apparentTemperature!)°F"
+        getSpeech()
     }
 
 }

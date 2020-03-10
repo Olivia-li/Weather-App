@@ -15,11 +15,24 @@ extension WeatherVC: CLLocationManagerDelegate{
         
         let userLocation: CLLocation = locations[0] as CLLocation
         
+        var clLocation: CLLocation?
     
         manager.stopUpdatingLocation()
         
-        let longitude = "\(userLocation.coordinate.longitude)"
-        let latitude = "\(userLocation.coordinate.latitude)"
+        let longitude: String!
+        let latitude: String!
+        
+        if let location = self.coordinate {
+            clLocation = coordToLoc(coord: location)
+            longitude = "\(location.longitude)"
+            latitude = "\(location.latitude)"
+        } else{
+            clLocation = userLocation
+            longitude = "\(userLocation.coordinate.longitude)"
+            latitude = "\(userLocation.coordinate.latitude)"
+        }
+        
+        print(latitude)
         
         if let date = stringDate{
             self.url = ApiManager.getURL(latitude, longitude, date: date)
@@ -29,15 +42,15 @@ extension WeatherVC: CLLocationManagerDelegate{
             self.url = ApiManager.getURL(latitude: latitude, longitude: longitude)
             print("no date")
         }
-        print(self.url)
         getApi(self.url!)
         
-        getPlace(for: userLocation) { placemark in
+        getPlace(for: clLocation!) { placemark in
             guard let placemark = placemark else { return }
             
             var output = ""
             if let town = placemark.locality {
                 output = output + "\(town)"
+                self.city = output
             }
             if let state = placemark.administrativeArea {
                           output = output + ", \(state)"
@@ -46,6 +59,12 @@ extension WeatherVC: CLLocationManagerDelegate{
         }
     }
     
+    func coordToLoc(coord: CLLocationCoordinate2D) -> CLLocation{
+        let getLat: CLLocationDegrees = coord.latitude
+        let getLon: CLLocationDegrees = coord.longitude
+        let newLoc: CLLocation =  CLLocation(latitude: getLat, longitude: getLon)
+        return newLoc
+    }
     
     func determineCurrentLocation() {
         locationManager = CLLocationManager()

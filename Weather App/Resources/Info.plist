@@ -55,5 +55,7 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App needs to access location to find weather</string>
+	<key>NFCReaderUsageDescription</key>
+	<string>NFC tag to scan it</string>
 </dict>
 </plist>

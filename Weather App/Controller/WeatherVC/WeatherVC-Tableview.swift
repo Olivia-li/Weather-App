@@ -20,7 +20,7 @@ extension WeatherVC: UITableViewDelegate, UITableViewDataSource{
         let weatherForecast = forecast[indexPath.row]
         
         
-        cell.day.text = "\(ApiManager.getDayOfWeek(ApiManager.getDate(unix: weatherForecast.time)))"
+        cell.day.text = "\(ApiManager.getDayOfWeek(ApiManager.getDate(unix: weatherForecast.time))!)"
         cell.picture.image = UIImage(named: weatherForecast.icon)
         cell.high.text = "\(weatherForecast.temperatureHigh!)"
         cell.low.text = "\(weatherForecast.temperatureLow!)"
