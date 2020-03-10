@@ -15,6 +15,7 @@ extension WeatherVC: CLLocationManagerDelegate{
         
         let userLocation: CLLocation = locations[0] as CLLocation
         
+    
         manager.stopUpdatingLocation()
         
         let longitude = "\(userLocation.coordinate.longitude)"
@@ -22,6 +23,19 @@ extension WeatherVC: CLLocationManagerDelegate{
         
         self.url = ApiManager.getURL(latitude: latitude, longitude: longitude)
         getApi(self.url!)
+        
+        getPlace(for: userLocation) { placemark in
+            guard let placemark = placemark else { return }
+            
+            var output = ""
+            if let town = placemark.locality {
+                output = output + "\(town)"
+            }
+            if let state = placemark.administrativeArea {
+                          output = output + ", \(state)"
+                      }
+            self.location.text = output
+        }
     }
     
     
@@ -35,5 +49,30 @@ extension WeatherVC: CLLocationManagerDelegate{
             locationManager?.startUpdatingLocation()
         }
     }
+    
+    func getPlace(for location: CLLocation,
+                  completion: @escaping (CLPlacemark?) -> Void) {
+        
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            
+            guard error == nil else {
+                print("*** Error in \(#function): \(error!.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let placemark = placemarks?[0] else {
+                print("*** Error in \(#function): placemark is nil")
+                completion(nil)
+                return
+            }
+            
+            completion(placemark)
+        }
+    }
+    
+    
+
 }
     

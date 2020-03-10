@@ -7,14 +7,42 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ForecastVC: UIViewController {
-
+    
+    var forecast: [Forecast]!
+    var locationManager: CLLocationManager?
+    var url: String?
+    @IBOutlet weak var mondayHigh: UILabel!
+    @IBOutlet weak var tuesdayHigh: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        determineCurrentLocation()
 
         // Do any additional setup after loading the view.
     }
+    
+    func getApi(_ sURL: String) {
+        ApiManager.fetchForecast(sURL, { data in
+            self.forecast = data
+            DispatchQueue.main.async {
+                self.reload()
+                print("run")
+            }
+        })
+    }
+    
+    func getDate(unix: Double) -> NSDate{
+        return NSDate(timeIntervalSince1970: unix)
+    }
+    
+    func reload(){
+        mondayHigh.text = "\(getDate(unix: forecast[0].time))"
+        tuesdayHigh.text = forecast[1].summary
+    }
+
     
 
     /*

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		45324E7C2416DF1000BC4316 /* ForecastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45324E7B2416DF1000BC4316 /* ForecastVC.swift */; };
+		45324E7E2416DF9800BC4316 /* ForecastVC-CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45324E7D2416DF9800BC4316 /* ForecastVC-CLLocation.swift */; };
+		45324E802416ED4F00BC4316 /* weatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45324E7F2416ED4F00BC4316 /* weatherCell.swift */; };
+		453ED5912416EDEC003897C9 /* WeatherVC-Tableview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453ED5902416EDEC003897C9 /* WeatherVC-Tableview.swift */; };
 		455EF2322416048300D70A48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455EF2312416048300D70A48 /* AppDelegate.swift */; };
 		455EF2342416048300D70A48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455EF2332416048300D70A48 /* SceneDelegate.swift */; };
 		455EF2362416048300D70A48 /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455EF2352416048300D70A48 /* WeatherVC.swift */; };
@@ -40,6 +43,9 @@
 
 /* Begin PBXFileReference section */
 		45324E7B2416DF1000BC4316 /* ForecastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastVC.swift; sourceTree = "<group>"; };
+		45324E7D2416DF9800BC4316 /* ForecastVC-CLLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForecastVC-CLLocation.swift"; sourceTree = "<group>"; };
+		45324E7F2416ED4F00BC4316 /* weatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherCell.swift; sourceTree = "<group>"; };
+		453ED5902416EDEC003897C9 /* WeatherVC-Tableview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherVC-Tableview.swift"; sourceTree = "<group>"; };
 		455EF22E2416048300D70A48 /* Weather App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		455EF2312416048300D70A48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		455EF2332416048300D70A48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 			children = (
 				455EF2352416048300D70A48 /* WeatherVC.swift */,
 				455EF267241605CE00D70A48 /* WeatherVC-CLLocation.swift */,
+				453ED5902416EDEC003897C9 /* WeatherVC-Tableview.swift */,
 			);
 			path = WeatherVC;
 			sourceTree = "<group>";
@@ -97,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				45324E7B2416DF1000BC4316 /* ForecastVC.swift */,
+				45324E7D2416DF9800BC4316 /* ForecastVC-CLLocation.swift */,
 			);
 			path = ForecastVC;
 			sourceTree = "<group>";
@@ -184,6 +192,7 @@
 		455EF264241604FD00D70A48 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				45324E7F2416ED4F00BC4316 /* weatherCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -319,9 +328,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45324E802416ED4F00BC4316 /* weatherCell.swift in Sources */,
 				45324E7C2416DF1000BC4316 /* ForecastVC.swift in Sources */,
 				455EF2362416048300D70A48 /* WeatherVC.swift in Sources */,
 				455EF2322416048300D70A48 /* AppDelegate.swift in Sources */,
+				45324E7E2416DF9800BC4316 /* ForecastVC-CLLocation.swift in Sources */,
+				453ED5912416EDEC003897C9 /* WeatherVC-Tableview.swift in Sources */,
 				455EF2342416048300D70A48 /* SceneDelegate.swift in Sources */,
 				455EF268241605CE00D70A48 /* WeatherVC-CLLocation.swift in Sources */,
 				455EF26E24160A8900D70A48 /* ApiManager.swift in Sources */,
@@ -499,6 +511,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RSR8K28Z58;
 				INFOPLIST_FILE = "Weather App/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -516,6 +529,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RSR8K28Z58;
 				INFOPLIST_FILE = "Weather App/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

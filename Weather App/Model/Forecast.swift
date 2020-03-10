@@ -32,7 +32,7 @@ class ForecastRequest: Decodable{
 }
 
 struct Forecast: Decodable{
-    var time: Int
+    var time: Double
     var summary: String
     var icon: String
     var precipProbability: Double
